@@ -2,89 +2,17 @@
 //REFERENZIO I NAMESPACE O CON LO USING O LA CLASSE SPECIFICA CON IL NOME COMPLETO
 //using Unicam.Paradigmi.Test.Models;
 
-using System.Collections;
-using System.Collections.Concurrent;
-using Unicam.Paradigmi.Test.Models;
+using Unicam.Paradigmi.Abstractions;
+using Unicam.Paradigmi.Test.Examples;
 
-var persona = new Unicam.Paradigmi.Test.Models.Persona();
-persona.Nome = "Lorenzo";
-persona.Cognome = "Pompili";
-persona.Età = 21;
-//************************************************//
+var examples = new List<IExample>();
 
-//DICHIARAZIONE DI UN ARRAY
+examples.Add(new InizializzazioneClassiExample());
+examples.Add(new GestioneEventiExample());
 
-string[] stagioni = new string[4];
-
-stagioni[0] = "Primavera";
-stagioni[1] = "Estate";
-stagioni[2] = "Autunno";
-stagioni[3] = "Inverno";
-foreach(var stagione in stagioni)
+foreach (var example in examples)
 {
-    Console.WriteLine($"Ciclo sulla stagione {stagione}");
-}
-//*********************************************************
-
-//PROVA PASSAGGIO PER VALORE / RIFERIMENTO
-var miaEtà = 15;
-var nome = "Lorenzo";
-var cognome = "Pompili";
-ModificaValore(miaEtà);
-Console.WriteLine($"Ciao mi chiamo {nome} {cognome}. La mia età è : {miaEtà}");
-ModificaValorePerRiferimento(ref miaEtà);
-Console.WriteLine($"Ciao mi chiamo {nome} {cognome}. La mia età è : {miaEtà}");
-int annoNascità = 0;
-IsMaggiorenne(miaEtà, out annoNascità);
-Console.WriteLine($"Sono nato nell'anno {annoNascità}");
-//Console.ReadLine();
-
-void ModificaValore(int età)
-{
-    età = 20;
+    example.RunExample();
 }
 
-void ModificaValorePerRiferimento(ref int età)
-{
-    età = 20;
-}
-
-bool IsMaggiorenne(int età, out int annoNascità)
-{
-    annoNascità = DateTime.Now.Year - età;
-    return età >= 18;
-}
-//*********************************************//
-
-
-//GESTIONE DI EVENTI//
-ArrayList listaArticoli = CreaListaArticoli();
-
-foreach(Articolo articolo in listaArticoli)
-{
-    articolo.QtaMagazzino -= 8;
-}
-
-ArrayList CreaListaArticoli()
-{
-    var lista = new ArrayList();
-    for (int i = 0; i < 10; i++)
-    {
-        var articolo = new Articolo();
-        articolo.CodiceArticolo = $"CODART{i:000}";
-        articolo.Descrizione = $"DESCART{i:000}";
-        Random rdm = new Random(30);
-        articolo.QtaMagazzino = rdm.Next(10, 20);
-        articolo.LivelloScortaMinima = articolo.QtaMagazzino / 2;
-        articolo.SottoScortaEvent += Articolo_SottoScortaEvent;
-        lista.Add(articolo);
-    }
-    return lista;
-}
-
-void Articolo_SottoScortaEvent(Articolo art, DateTime time)
-{
-    Console.WriteLine($"L'articolo {art.CodiceArticolo} è andato sotto scorta. QtaMagazzino : {art.QtaMagazzino} Livello Scorta Minimo : {art.LivelloScortaMinima}" );
-}
-
-//*********************************************//
+Console.ReadLine();
