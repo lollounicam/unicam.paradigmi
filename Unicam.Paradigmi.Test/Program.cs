@@ -4,6 +4,7 @@
 
 using Unicam.Paradigmi.Abstractions;
 using Unicam.Paradigmi.Test.Examples;
+using Unicam.Paradigmi.Test.Models;
 
 var examples = new List<IExample>();
 
@@ -14,5 +15,8 @@ foreach (var example in examples)
 {
     example.RunExample();
 }
+
+
+
 
 Console.ReadLine();
