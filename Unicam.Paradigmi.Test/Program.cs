@@ -8,8 +8,9 @@ using Unicam.Paradigmi.Test.Models;
 
 var examples = new List<IExample>();
 
-examples.Add(new InizializzazioneClassiExample());
-examples.Add(new GestioneEventiExample());
+//examples.Add(new InizializzazioneClassiExample());
+//examples.Add(new GestioneEventiExample());
+examples.Add(new FileManagementExample());
 
 foreach (var example in examples)
 {
