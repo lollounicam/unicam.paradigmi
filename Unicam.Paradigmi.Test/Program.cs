@@ -10,14 +10,13 @@ var examples = new List<IExample>();
 
 //examples.Add(new InizializzazioneClassiExample());
 //examples.Add(new GestioneEventiExample());
-examples.Add(new FileManagementExample());
+//examples.Add(new FileManagementExample());
+examples.Add(new JsonSerializerExample());
+
 
 foreach (var example in examples)
 {
     example.RunExample();
 }
-
-
-
 
 Console.ReadLine();
