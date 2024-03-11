@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Unicam.Paradigmi.Abstractions;
+using Unicam.Paradigmi.Models.Entities;
 using Unicam.Paradigmi.Test.Models;
 
 namespace Unicam.Paradigmi.Test.Examples
@@ -21,7 +22,7 @@ namespace Unicam.Paradigmi.Test.Examples
             List<Azienda> list = new List<Azienda>();
             using (var connection = new SqlConnection())
             {
-                connection.ConnectionString = "Server=localhost;Database=Paradigmi;Trusted_Connection=True;";
+                connection.ConnectionString = "Server=localhost;Database=Paradigmi;User Id=paradigmi;Password=paradigmi;";
                 connection.Open();
 
                 var cmd = new SqlCommand();

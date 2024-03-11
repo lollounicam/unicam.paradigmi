@@ -12,7 +12,9 @@ var examples = new List<IExample>();
 //examples.Add(new GestioneEventiExample());
 //examples.Add(new FileManagementExample());
 //examples.Add(new JsonSerializerExample());
-examples.Add(new AdoNetExample());
+//examples.Add(new AdoNetExample());
+examples.Add(new EntityFrameworkExample());
+
 
 
 foreach (var example in examples)

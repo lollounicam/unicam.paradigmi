@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Unicam.Paradigmi.Abstractions\Unicam.Paradigmi.Abstractions.csproj" />
+    <ProjectReference Include="..\Unicam.Paradigmi.Models\Unicam.Paradigmi.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>
