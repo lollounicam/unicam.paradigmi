@@ -1,0 +1,6 @@
+@Unicam.Paradigmi.Web_HostAddress = http://localhost:5218
+
+GET {{Unicam.Paradigmi.Web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
