@@ -7,21 +7,74 @@ using System.Threading.Tasks;
 using Unicam.Paradigmi.Abstractions;
 using Unicam.Paradigmi.Models.Context;
 using Unicam.Paradigmi.Models.Entities;
+using Unicam.Paradigmi.Models.Repositories;
 
 namespace Unicam.Paradigmi.Test.Examples
 {
     public class EntityFrameworkExample : IExample
     {
+        public EntityFrameworkExample()
+        {
+            DbContext = new MyDbContext(); 
+        }
+
+        public MyDbContext DbContext { get; set; }
+        public async Task RunExampleAsync()
+        {
+
+        }
+
+        public async Task<Dipendente> GetDipendenteByCognomeAsync(string cognome)
+        {
+            return null;
+        }
+        public async Task<Azienda> GetDipendenteByIdAsync(int id)
+        {
+            return null;
+        }
+        public async Task AddAziendaAsync(Azienda azienda)
+        {
+        
+        }
         public void RunExample()
         {
             var ctx = new MyDbContext();
-            var aziende = ctx.Aziende.AsNoTracking().ToList();
+
+            
+            LoadWithExplicitLoading(ctx);
+            LoadWithEeagerLoading(ctx);
+            LoadWithLazyLoading(ctx);
+            //var aziende = ctx.Aziende.AsNoTracking().ToList();
             //QueryDiFiltro(ctx);
             //AddAzienda(ctx);
             //EditAziendaCompleta(ctx);
             //EditProprietaAzienda(ctx);
             //DeleteAzienda(ctx);
-            UpdateConLettura(ctx);
+            //UpdateConLettura(ctx);
+        }
+
+        public void LoadWithLazyLoading(MyDbContext ctx)
+        {
+            var dipendente = ctx.Dipendenti
+                .Where(w => w.IdDipendente == 1).First();
+
+            var nomeCittaAzienda = dipendente.AziendaDoveLavora.Citta;
+        }
+
+        public void LoadWithExplicitLoading(MyDbContext ctx)
+        {
+            var dipendenti = ctx.Dipendenti
+                .Where(w => w.IdDipendente == 1).First();
+
+            ctx.Entry(dipendenti)
+                .Reference(i => i.AziendaDoveLavora)
+                .Load();
+        }
+        private void LoadWithEeagerLoading(MyDbContext ctx)
+        {
+            var dipendente = ctx.Dipendenti
+                .Include(i => i.AziendaDoveLavora)
+                .Where(w => w.IdDipendente == 1).First();
         }
 
         private void UpdateConLettura(MyDbContext ctx)

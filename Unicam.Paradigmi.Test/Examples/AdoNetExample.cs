@@ -12,6 +12,10 @@ namespace Unicam.Paradigmi.Test.Examples
 {
     public class AdoNetExample : IExample
     {
+        public async Task RunExampleAsync()
+        {
+        }
+
         public void RunExample()
         {
             GetAziende();
@@ -62,5 +66,7 @@ namespace Unicam.Paradigmi.Test.Examples
                 cmd.ExecuteNonQuery();
             }
         }
+
+        
     }
 }

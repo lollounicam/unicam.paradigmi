@@ -10,6 +10,9 @@ namespace Unicam.Paradigmi.Test.Examples
 {
     public class ExtensionMethodExample : IExample
     {
+        public async Task RunExampleAsync()
+        {
+        }
         public void RunExample()
         {
             string cognome = "Pompili";

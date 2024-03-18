@@ -13,13 +13,15 @@ var examples = new List<IExample>();
 //examples.Add(new FileManagementExample());
 //examples.Add(new JsonSerializerExample());
 //examples.Add(new AdoNetExample());
-examples.Add(new EntityFrameworkExample());
+//examples.Add(new EntityFrameworkExample());
+examples.Add(new TaskExample());
 
 
 
 foreach (var example in examples)
 {
-    example.RunExample();
+    //example.RunExample();
+    await example.RunExampleAsync();
 }
 
 Console.ReadLine();

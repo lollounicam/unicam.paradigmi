@@ -11,6 +11,9 @@ namespace Unicam.Paradigmi.Test.Examples
 {
     public class InizializzazioneClassiExample : IExample
     {
+        public async Task RunExampleAsync()
+        {
+        }
 
         public  void RunExample()
         {
